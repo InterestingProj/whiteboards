@@ -1,0 +1,76 @@
+name:                whiteboards
+version:             0.1.0.0
+-- synopsis:
+-- description:
+homepage:            https://github.com/githubuser/whiteboards#readme
+license:             BSD3
+license-file:        LICENSE
+author:              Author name here
+maintainer:          example@example.com
+copyright:           2017 Author name here
+category:            Web
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Api
+                     , App
+  build-depends:       base >= 4.7 && < 5
+                     , servant >= 0.8
+                     , servant-elm >= 0.4.0.0
+                     , elm-export >= 0.6.0.1
+                     , persistent >= 2.6
+                     , text >= 1.2.2.1
+                     , aeson >= 1.0.2.1
+                     , time >= 1.6.0.1
+                     , either 
+                     , text
+                     , aeson
+                     , mtl
+                     , directory
+                     , servant-server
+                     , servant-js
+                     , servant-foreign
+                     , wai 
+                     , wai-extra 
+                     , warp 
+                     , transformers
+                     , js-jquery
+  default-language:    Haskell2010
+
+executable whiteboards-exe
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                     , wai >= 3.2.1.1
+                     , warp >= 3.2.11
+                     , whiteboards
+  default-language:    Haskell2010
+
+executable whiteboards-genElm
+  hs-source-dirs:      util
+  main-is:             GenElm.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                     , wai >= 3.2.1.1
+                     , warp >= 3.2.11
+                     , servant-elm >= 0.4.0.0
+                     , elm-export >= 0.6.0.1
+                     , whiteboards
+  default-language:    Haskell2010
+
+test-suite whiteboards-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  build-depends:       base
+                     , whiteboards
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/githubuser/whiteboards
